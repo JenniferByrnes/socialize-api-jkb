@@ -12,7 +12,7 @@ const {
 
 // /api/Thoughts
 router
-  .route()
+  .route('/')
   .post(addThought)
   .get(getAllThoughts)
 
@@ -20,9 +20,9 @@ router
 // /api/Thoughts/<thoughtId>
 router
   .route('/:thoughtId')
-  // .get(getOneThought)
-  // .put(updateThought)
-  // .delete(removeThought)
+  .get(getOneThought)
+  .put(updateThought)
+  .delete(removeThought)
 
 // /api/Thoughts/:thoughtId/reactions
 router
