@@ -3,6 +3,7 @@ const { Thought, User } = require('../models');
 const thoughtController = {
   // get all thoughts
   getAllThoughts(req, res) {
+    console.log("in getAllThoughts");
     Thought.find({})
       .populate({
         path: 'reactions',
