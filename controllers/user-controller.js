@@ -1,13 +1,9 @@
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 const userController = {
   // get all users
   getAllUser(req, res) {
     User.find({})
-      .populate({
-        path: 'thoughts',
-        select: '-__v'
-      })
       .select('-__v')
       .sort({ _id: -1 })
       .then(dbUserData => res.json(dbUserData))
@@ -19,7 +15,6 @@ const userController = {
 
   // get one user by id
   getUserById({ params }, res) {
-    console.log("jkbgetUserById=", params);
     User.findOne({ _id: params.id })
       .populate({
         path: 'thoughts',
@@ -67,12 +62,13 @@ const userController = {
     User.findOneAndDelete({ _id: params.id })
       .then(dbUserData => {
         if (!dbUserData) {
-          res.status(404).json({ message: 'No user found with this id!' });
-          return;
+          return res.status(404).json({ message: 'No user found with this id!' });
         }
-        res.json(dbUserData);
+        return Thought.deleteMany({_id:{$in:dbUserData.thoughts}})
+
       })
-      .catch(err => res.status(400).json(err));
+      .then ( () => res.json("User and associate thoughts were deleted."))
+      .catch(err => res.status(400).json(err.message));
   },
 
   //.route('/:userId/friends/:friendId')
