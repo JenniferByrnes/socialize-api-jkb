@@ -16,10 +16,6 @@ const thoughtController = {
   // get one thought
   getOneThought({ params }, res) {
     Thought.findOne({ _id: params.thoughtId })
-      .populate({
-        path: 'reactions',
-        select: '-__v'
-      })
       .select('-__v')
       .sort({ _id: -1 })
       .then(dbThoughtData => res.json(dbThoughtData))

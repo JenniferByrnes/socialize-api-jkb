@@ -70,7 +70,7 @@ const userController = {
       .then ( () => res.json("User and associate thoughts were deleted."))
       .catch(err => res.status(400).json(err.message));
   },
-
+  // add a friend
   //.route('/:userId/friends/:friendId')
   //.post(addFriend)
   addFriend({ params }, res) {
@@ -105,7 +105,6 @@ const userController = {
       })
       .catch(err => res.json(err))
   },
-
 }
 
 module.exports = userController;

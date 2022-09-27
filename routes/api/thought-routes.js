@@ -10,6 +10,7 @@ const {
   removeReaction
 } = require('../../controllers/thought-controller');
 
+// /api/Thoughts/:thoughtId/reaction/:reactionId
 router
   .route('/:thoughtId/reaction/:reactionId')
   .delete(removeReaction);
