@@ -4,7 +4,8 @@
 
 An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. This uses Express.js for routing, a MongoDB database, and the Mongoose ODM.
 
-Deployed App: https://afternoon-cove-54535.herokuapp.com/
+There is no deployed app - the walkthrough of the API routes is here:
+https://drive.google.com/file/d/1d47PjqSdjys9tpSZB9eOGUrUUSaFeB8I/view?usp=sharing
 
 ## Table of Contents
 
@@ -15,7 +16,6 @@ Deployed App: https://afternoon-cove-54535.herokuapp.com/
 - [How to Contribute](#How-to-Contribute)
 - [Tests](#Tests)
 - [Questions?](#Questions)
-- [ScreenShot](#ScreenShot)
 
 ## Installation
 
@@ -26,7 +26,7 @@ Deployed App: https://afternoon-cove-54535.herokuapp.com/
 3. Install NPM Express package
  - npm install express
 4. Initiate application
- - npm start
+ - node server.js
 
 
 ## Usage
@@ -50,11 +50,6 @@ None
 GitHub profile: https://github.com/jenniferbyrnes
 
 Please address any questions to me at jennifer.byrnes@outlook.com
-
-## ScreenShot
-
-![Note Taker Opening Screen](images/ScreenShot1.png)
-![Note Taker Main Screen](images/ScreenShot2.png)
 
   
   

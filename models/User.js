@@ -3,7 +3,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const UserSchema = new Schema(
   {
-    userName: {
+    username: {
       type: String,
       required: 'You need to provide a user name!',
       trim: true,
@@ -15,7 +15,6 @@ const UserSchema = new Schema(
       trim: true,
       unique: true,
       required: 'Email address is required',
-      validate: [validateEmail, 'Please fill a valid email address'],
       match: [/^.+@(?:[\w-]+\.)+\w+$/, 'Please fill a valid email address']
     },
 
@@ -25,7 +24,12 @@ const UserSchema = new Schema(
         ref: 'Thought'
       }
     ],
-    friends: []
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
   },
   {
     toJSON: {
@@ -36,9 +40,9 @@ const UserSchema = new Schema(
   }
 );
 
-// get total count of thoughts and reactions on retrieval
+// get total count of friends on retrieval
 UserSchema.virtual('friendCount').get(function () {
-  return this.users.reduce((total, user) => total + user.friends.length + 1, 0);
+  return this.friends.length;
 });
 
 // create the User model using the UserSchema
